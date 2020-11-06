@@ -21,6 +21,25 @@ class App extends Component {
     ],
   };
 
+  handleAddComment = () => {
+    console.log('Adding Comment');
+
+    const newComment = {
+      name: 'Peter',
+      email: 'peterpan@email.com',
+      date: new Date(2020, 11, 5),
+      message: 'Hello guys!',
+    };
+
+    // let commentList = this.state.comments;
+    // commentList.push(newComment);
+    // this.setState(commentList);
+
+    this.setState({
+      comments: [...this.state.comments, newComment],
+    });
+  };
+
   render() {
     return (
       <div className="App">
@@ -36,6 +55,8 @@ class App extends Component {
             {comment.message}
           </Comments>
         ))}
+
+        <button onClick={this.handleAddComment}> Add Comment</button>
       </div>
     );
   }
