@@ -19,24 +19,31 @@ class App extends Component {
         message: 'Amazing',
       },
     ],
+
+    newComment: {
+      name: '',
+      email: '',
+      message: '',
+    },
   };
 
-  handleAddComment = () => {
+  handleAddComment = (event) => {
+    event.preventDefault();
     console.log('Adding Comment');
 
-    const newComment = {
-      name: 'Peter',
-      email: 'peterpan@email.com',
-      date: new Date(2020, 11, 5),
-      message: 'Hello guys!',
-    };
-
-    // let commentList = this.state.comments;
-    // commentList.push(newComment);
-    // this.setState(commentList);
+    const newComment = { ...this.state.newComment, date: new Date() };
 
     this.setState({
       comments: [...this.state.comments, newComment],
+      newComment: { name: '', email: '', message: '' },
+    });
+  };
+
+  handleInputChange = (event) => {
+    console.log(event.target.value);
+    const { value, name } = event.target;
+    this.setState({
+      newComment: { ...this.state.newComment, [name]: value },
     });
   };
 
@@ -56,7 +63,37 @@ class App extends Component {
           </Comments>
         ))}
 
-        <button onClick={this.handleAddComment}> Add Comment</button>
+        <form method="post" onSubmit={this.handleAddComment}>
+          <h2>Add comments</h2>
+          <div>
+            <input
+              type="text"
+              name="name"
+              placeholder="Name"
+              value={this.state.newComment.name}
+              onChange={this.handleInputChange}
+            />
+          </div>
+          <div>
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={this.state.newComment.email}
+              onChange={this.handleInputChange}
+            />
+          </div>
+          <div>
+            <textarea
+              name="message"
+              rows="4"
+              value={this.state.newComment.message}
+              onChange={this.handleInputChange}
+            />
+          </div>
+
+          <button type="submit">Add comment</button>
+        </form>
       </div>
     );
   }
