@@ -10,6 +10,7 @@ const Comments = (props) => {
 
       {props.children}
       <p>{props.date.toString()}</p>
+      <button onClick={props.onRemove}>X</button>
     </div>
   );
 };

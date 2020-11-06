@@ -39,6 +39,13 @@ class App extends Component {
     });
   };
 
+  handleRemoveComment = (comment) => {
+    let list = this.state.comments;
+
+    list = list.filter((c) => c !== comment);
+    this.setState({ comments: list });
+  };
+
   handleInputChange = (event) => {
     console.log(event.target.value);
     const { value, name } = event.target;
@@ -58,6 +65,7 @@ class App extends Component {
             name={comment.name}
             email={comment.email}
             date={comment.date}
+            onRemove={this.handleRemoveComment.bind(this, comment)}
           >
             {comment.message}
           </Comments>
