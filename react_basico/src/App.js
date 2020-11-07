@@ -71,12 +71,17 @@ class App extends Component {
           </Comments>
         ))}
 
-        <form method="post" onSubmit={this.handleAddComment}>
+        <form
+          method="post"
+          onSubmit={this.handleAddComment}
+          className="newComment"
+        >
           <h2>Add comments</h2>
           <div>
             <input
               type="text"
               name="name"
+              required
               placeholder="Name"
               value={this.state.newComment.name}
               onChange={this.handleInputChange}
@@ -86,6 +91,7 @@ class App extends Component {
             <input
               type="email"
               name="email"
+              required
               placeholder="Email"
               value={this.state.newComment.email}
               onChange={this.handleInputChange}
@@ -95,6 +101,7 @@ class App extends Component {
             <textarea
               name="message"
               rows="4"
+              required
               value={this.state.newComment.message}
               onChange={this.handleInputChange}
             />
