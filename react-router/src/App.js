@@ -11,6 +11,7 @@ import Home from './components/Home/Home';
 import Usuarios from './components/Usuarios/Usuarios';
 import AdicionarUsuarios from './components/AdicionarUsuario/AdicionarUsuario';
 import PaginaNaoEncontrada from './components/PaginaNaoEncontrada/PaginaNaoEncontrada';
+import DetalhesUsuario from './components/DetalhesDoUsuario/DetalhesDoUsuario';
 
 function App() {
   return (
@@ -37,6 +38,9 @@ function App() {
         <main>
           <Switch>
             <Route path="/" exact component={Home} />
+            <Route path="/usuarios/:codigo">
+              <DetalhesUsuario />
+            </Route>
             <Route path="/usuarios" component={Usuarios} />
             <Route path="/adicionar" component={AdicionarUsuarios} />
             <Route path="*" component={PaginaNaoEncontrada} />

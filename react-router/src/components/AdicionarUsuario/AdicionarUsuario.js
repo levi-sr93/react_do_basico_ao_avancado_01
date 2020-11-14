@@ -18,17 +18,17 @@ function AdicionarUsuario() {
     };
 
     fetch('https://reqres.in/api/users', {
-      //passando como segundo parametro informações opcionais
-      method: 'POST', //se não informado ele utiliza o padrão que é GET
+      method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(usuario),
-    })
-      .then((resposta) => resposta.json()) //convertendo a resposta para JSON
-      .then((dados) => {
+    }).then((resposta) => {
+      if (resposta.ok) {
         setNome('');
         setSobrenome('');
         setEmail('');
-      });
+        alert('Usuário Cadastrado com sucesso');
+      }
+    });
   };
 
   return (
