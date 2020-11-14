@@ -7,7 +7,7 @@ const INITIAL_STATE = {
   ],
 };
 
-const reducers = (state, action) => {
+const reducers = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case actionsTypes.ADICIONAR_FRUTA:
       return { frutas: [...state.frutas, { ...action.payload }] };
