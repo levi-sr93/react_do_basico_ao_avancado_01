@@ -1,6 +1,8 @@
 import React from 'react';
 import { Formik } from 'formik';
 
+import Campo from './Campo';
+
 const AdicionaCliente = () => {
   return (
     <>
@@ -34,61 +36,14 @@ const AdicionaCliente = () => {
       >
         {(props) => (
           <form noValidate onSubmit={props.handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="nome">Nome</label>
-              <input
-                id="nome"
-                name="nome"
-                type="text"
-                value={props.values.nome}
-                onChange={props.handleChange}
-                onBlur={props.handleBlur}
-                className={
-                  props.errors.nome && props.touched.nome ? 'isInvalid' : ''
-                }
-              />
-              {props.errors.nome && props.touched.nome ? (
-                <div className="invalid-feedback">{props.errors.nome}</div>
-              ) : null}
-            </div>
-            <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                value={props.values.email}
-                onChange={props.handleChange}
-                onBlur={props.handleBlur}
-                className={
-                  props.errors.email && props.touched.email ? 'isInvalid' : ''
-                }
-              />
-              {props.errors.email && props.touched.email ? (
-                <div className="invalid-feedback">{props.errors.email}</div>
-              ) : null}
-            </div>
-            <div className="form-group">
-              <label htmlFor="date">Data de Nascimento</label>
-              <input
-                id="nascimento"
-                name="nascimento"
-                type="date"
-                value={props.values.nascimento}
-                onChange={props.handleChange}
-                onBlur={props.handleBlur}
-                className={
-                  props.errors.nascimento && props.touched.nascimento
-                    ? 'isInvalid'
-                    : ''
-                }
-              />
-              {props.errors.nascimento && props.touched.nascimento ? (
-                <div className="invalid-feedback">
-                  {props.errors.nascimento}
-                </div>
-              ) : null}
-            </div>
+            <Campo id="nome" name="nome" type="text" label="Nome" />
+            <Campo id="email" name="email" type="email" label="Email" />
+            <Campo
+              id="nascimento"
+              name="nascimento"
+              type="date"
+              label="Data de Nascimento"
+            />
             <button type="submit">Adicionar</button>
           </form>
         )}
